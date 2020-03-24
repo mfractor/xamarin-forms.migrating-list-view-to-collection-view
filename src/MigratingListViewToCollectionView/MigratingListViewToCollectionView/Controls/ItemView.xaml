@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MigratingListViewToCollectionView.Controls.ItemView"
+             Orientation="Horizontal"
+             Padding="10,15">
+     
+    <Label Style="{StaticResource fontLabelStyle}" Text="{Binding Icon}" WidthRequest="75" />
+
+    <Label Text="{Binding Text}"
+           FontSize="Large"
+           VerticalTextAlignment="Center"
+           HorizontalOptions="FillAndExpand"/>
+
+</StackLayout>

@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Collection View"
+             x:Class="MigratingListViewToCollectionView.CollectionPage"
+             xmlns:controls="clr-namespace:MigratingListViewToCollectionView.Controls"
+             Padding="0,30,0,0">
+    <ContentPage.IconImageSource>
+        <FontImageSource FontFamily="{StaticResource FontAwesome5ProRegular}"
+                         Glyph="&#xf00b;"
+                         Color="{StaticResource brandPrimary}"/>
+    </ContentPage.IconImageSource>
+
+    <Grid VerticalOptions="FillAndExpand">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <SearchBar Grid.Row="0" Text="{Binding SearchText}"/>
+
+        <ContentView Grid.Row="1" HeightRequest="2" BackgroundColor="{StaticResource brandSecondary}" />
+
+        <RefreshView IsRefreshing="{Binding IsRefreshing}" Command="{Binding RefreshCommand}" Grid.Row="2">
+            <CollectionView ItemsSource="{Binding FilteredItems}" VerticalOptions="FillAndExpand">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <controls:InteractiveItemView/>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+                <CollectionView.EmptyView>
+                        <ContentView>
+                            <controls:EmptyView/>
+                        </ContentView>
+                </CollectionView.EmptyView>
+
+            </CollectionView>
+        </RefreshView>
+
+    </Grid>
+</ContentPage>

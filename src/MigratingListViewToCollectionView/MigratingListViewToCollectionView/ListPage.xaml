@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MigratingListViewToCollectionView.ListPage"
+             Title="List View"
+             Padding="0,30,0,0" xmlns:local="clr-namespace:MigratingListViewToCollectionView" xmlns:controls="clr-namespace:MigratingListViewToCollectionView.Controls">
+    <ContentPage.IconImageSource>
+        <FontImageSource FontFamily="{StaticResource FontAwesome5ProRegular}"
+                         Glyph="&#xf022;"
+                         Color="{StaticResource brandPrimary}"/>
+    </ContentPage.IconImageSource>
+
+    <Grid VerticalOptions="FillAndExpand">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <SearchBar Grid.Row="0" Text="{Binding SearchText}"/>
+
+        <ContentView Grid.Row="1" HeightRequest="2" BackgroundColor="{StaticResource brandSecondary}" />
+
+        <ListView Grid.Row="2"
+                  IsRefreshing="{Binding IsRefreshing}"
+                  IsPullToRefreshEnabled="true"
+                  RefreshCommand="{Binding RefreshCommand}"
+                  HasUnevenRows="true"
+                  RowHeight="-1"
+                  IsVisible="{Binding HasFilteredItems}"
+                  ItemsSource="{Binding FilteredItems}"
+                  VerticalOptions="FillAndExpand"
+                  ItemTapped="ListView_ItemTapped">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.ContextActions>
+                            <MenuItem Text="⭐️" Command="{Binding ItemFavourited}"/>
+                        </ViewCell.ContextActions>
+                        <controls:ItemView/>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+        </ListView>
+
+        <ContentView Grid.Row="2" VerticalOptions="FillAndExpand" IsVisible="{Binding DoesNotHaveFilteredItems}">
+            <controls:EmptyView/>
+        </ContentView>
+    </Grid>
+</ContentPage>

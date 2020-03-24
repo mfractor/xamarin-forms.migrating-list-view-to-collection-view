@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<StackLayout Orientation="Vertical"
+             VerticalOptions="Center"
+             HorizontalOptions="Center"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MigratingListViewToCollectionView.Controls.EmptyView"
+             xmlns:local="clr-namespace:MigratingListViewToCollectionView">
+  <ActivityIndicator IsRunning="true"
+                     IsVisible="{Binding IsRefreshing}"/>
+  <Label Text="Your search returned no results"
+         VerticalTextAlignment="Center"
+         HorizontalTextAlignment="Center">
+    <Label.Triggers>
+      <DataTrigger TargetType="Label"
+                   Binding="{Binding IsRefreshing}"
+                   Value="true">
+        <Setter Property="Text"
+                Value="Refreshing..."/>
+      </DataTrigger>
+    </Label.Triggers>
+  </Label>
+</StackLayout>

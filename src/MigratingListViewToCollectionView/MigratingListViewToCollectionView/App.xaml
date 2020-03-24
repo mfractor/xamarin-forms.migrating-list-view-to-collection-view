@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:d="http://xamarin.com/schemas/2014/forms/design" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="MigratingListViewToCollectionView.App">
+    <Application.Resources>
+      <ResourceDictionary>
+        <Color x:Key="brandSecondary">#B0C4DE</Color>
+        <OnPlatform x:TypeArguments="x:String" x:Key="FontAwesome5ProRegular">
+          <On Platform="iOS" Value="FontAwesome5Pro-Regular"/>
+          <On Platform="Android" Value="FontAwesomeRegular.ttf#Regular"/>
+        </OnPlatform>
+        <Color x:Key="brandPrimary">#8A2BE2</Color>
+        <Style x:Key="fontLabelStyle" TargetType="Label">
+          <Setter Property="HorizontalTextAlignment" Value="Center"/>
+          <Setter Property="TextColor" Value="{StaticResource brandPrimary}"/>
+          <Setter Property="VerticalTextAlignment" Value="Center"/>
+          <Setter Property="FontFamily" Value="{StaticResource FontAwesome5ProRegular}"/>
+          <Setter Property="FontSize" Value="40"/>
+        </Style>
+      </ResourceDictionary>
+    </Application.Resources>
+</Application>
