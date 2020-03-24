@@ -16,8 +16,6 @@ For displaying lists of items in
 
 Firstly, why would you migrate? If your app is working already, what are the benefits that we
 
-
-
  **What is ListView**
 
  **What is CollectionView**

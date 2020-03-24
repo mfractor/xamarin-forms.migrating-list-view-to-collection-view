@@ -2,18 +2,23 @@
 <SwipeView xmlns="http://xamarin.com/schemas/2014/forms"
            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
            x:Class="MigratingListViewToCollectionView.Controls.InteractiveItemView"
+           x:Name="self"
            xmlns:controls="clr-namespace:MigratingListViewToCollectionView.Controls">
-   <SwipeView.RightItems>
-      <SwipeItems Mode="Execute">
-         <SwipeItemView Command="{Binding ItemFavourited}">
-            <Label Padding="0,0,0,20"
+    <SwipeView.RightItems>
+        <SwipeItems Mode="Execute">
+            <SwipeItemView Command="{Binding ItemFavourited}">
+                <Label Padding="0,0,0,20"
                    Text="⭐️"
                    VerticalTextAlignment="Center"
                    HorizontalTextAlignment="End"
                    FontSize="48"
                    WidthRequest="300"/>
-         </SwipeItemView>
-      </SwipeItems>
-   </SwipeView.RightItems>
-   <controls:ItemView/>
+            </SwipeItemView>
+        </SwipeItems>
+    </SwipeView.RightItems>
+    <controls:ItemView>
+        <controls:ItemView.GestureRecognizers>
+            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+        </controls:ItemView.GestureRecognizers>
+    </controls:ItemView>
 </SwipeView>

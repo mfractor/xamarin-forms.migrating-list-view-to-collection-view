@@ -8,5 +8,6 @@
 
     <local:CollectionPage/>
     
+    <local:CollectionDataTemplateSelectorPage/>
  
 </TabbedPage>

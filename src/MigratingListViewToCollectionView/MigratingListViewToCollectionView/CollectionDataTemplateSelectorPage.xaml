@@ -1,10 +1,15 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             Title="Collection View"
-             x:Class="MigratingListViewToCollectionView.CollectionPage"
+             Title="Collection View (Template Selector)"
+             x:Class="MigratingListViewToCollectionView.CollectionDataTemplateSelectorPage"
              xmlns:controls="clr-namespace:MigratingListViewToCollectionView.Controls"
-             Padding="0,30,0,0">
+             Padding="0,30,0,0" xmlns:selectors="clr-namespace:MigratingListViewToCollectionView.DataTemplateSelectors">
+   <ContentPage.Resources>
+      <ResourceDictionary>
+          <selectors:CollectionViewDataTemplateSelector x:Key="collectionViewDataTemplateSelector"/>
+      </ResourceDictionary>
+   </ContentPage.Resources>
     <ContentPage.IconImageSource>
         <FontImageSource FontFamily="{StaticResource FontAwesome5ProRegular}"
                          Glyph="&#xf00b;"
@@ -23,17 +28,13 @@
         <ContentView Grid.Row="1" HeightRequest="2" BackgroundColor="{StaticResource brandSecondary}" />
 
         <RefreshView IsRefreshing="{Binding IsRefreshing}" Command="{Binding RefreshCommand}" Grid.Row="2">
-            <CollectionView ItemsSource="{Binding FilteredItems}" VerticalOptions="FillAndExpand">
+            <CollectionView ItemsSource="{Binding FilteredItems}"
+                            VerticalOptions="FillAndExpand"
+                            ItemTemplate="{StaticResource collectionViewDataTemplateSelector}">
 
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout Orientation="Vertical"/>
                 </CollectionView.ItemsLayout>
-
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <controls:InteractiveItemView OnItemSelected="InteractiveItemView_OnItemSelected"/>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
 
                 <CollectionView.EmptyView>
                     <ContentView>
