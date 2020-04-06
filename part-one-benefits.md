@@ -14,11 +14,12 @@ In this 3-part blog series, we examine the benefits of collection views and how 
 
 Let's start by examining the core benefits of converting a `ListView` to a `CollectionView`.
 
-At a glance, `CollectionView` has three major benefits:
+At a glance, `CollectionView` has some major benefits:
 
  * Simpler API surface.
  * Feature richness.
  * Increased flexibility.
+ * Better performance
 
 ## Simpler API Surface
 
@@ -95,7 +96,7 @@ CollectionViews also have full feature parity with ListViews, this includes the 
  * Header View: CollectionView supports header
  * Footer View: CollectionView also support
  * [Scroll To:](https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/collectionview/scrolling) Use the `ScrollTo` method to scroll an item in the collection into view.
- * Seperator Item: CollectionViews do not have
+ * Seperator Item: CollectionViews do not have them
 
 ## Summary
 
