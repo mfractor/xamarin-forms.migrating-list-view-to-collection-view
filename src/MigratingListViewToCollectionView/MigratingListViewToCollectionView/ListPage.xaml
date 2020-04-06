@@ -35,9 +35,8 @@
                   IsVisible="{Binding HasFilteredItems}"
                   ItemsSource="{Binding FilteredItems}"
                   VerticalOptions="FillAndExpand"
-                  ItemTemplate="{StaticResource listViewDataTemplateSelector}"
                   ItemTapped="ListView_ItemTapped">
-            <!--<ListView.ItemTemplate>
+            <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <ViewCell.ContextActions>
@@ -46,7 +45,7 @@
                         <controls:ItemView/>
                     </ViewCell>
                 </DataTemplate>
-            </ListView.ItemTemplate>-->
+            </ListView.ItemTemplate>
 
         </ListView>
 
