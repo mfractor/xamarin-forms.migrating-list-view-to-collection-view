@@ -7,9 +7,7 @@
              Padding="0,30,0,0" xmlns:selectors="clr-namespace:MigratingListViewToCollectionView.DataTemplateSelectors">
    <ContentPage.Resources>
       <ResourceDictionary>
-          <selectors:CollectionViewDataTemplateSelector
-              x:Key="collectionViewDataTemplateSelector"
-              OnItemSelected="InteractiveItemView_OnItemSelected" />
+          <selectors:CollectionViewDataTemplateSelector x:Key="collectionViewDataTemplateSelector"/>
       </ResourceDictionary>
    </ContentPage.Resources>
     <ContentPage.IconImageSource>
@@ -29,9 +27,15 @@
 
         <ContentView Grid.Row="1" HeightRequest="2" BackgroundColor="{StaticResource brandSecondary}" />
 
-        <RefreshView IsRefreshing="{Binding IsRefreshing}" Command="{Binding RefreshCommand}" Grid.Row="2">
+        <RefreshView IsRefreshing="{Binding IsRefreshing}"
+                     Command="{Binding RefreshCommand}"
+                     Grid.Row="2">
+
             <CollectionView ItemsSource="{Binding FilteredItems}"
                             VerticalOptions="FillAndExpand"
+                            SelectionMode="Single"
+                            SelectionChanged="CollectionView_SelectionChanged"
+                            SelectionChangedCommand="{Binding ItemSelectedCommand}"
                             ItemTemplate="{StaticResource collectionViewDataTemplateSelector}">
 
                 <CollectionView.ItemsLayout>

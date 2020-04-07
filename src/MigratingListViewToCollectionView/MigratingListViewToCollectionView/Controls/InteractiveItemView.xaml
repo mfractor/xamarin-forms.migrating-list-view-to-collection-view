@@ -16,9 +16,5 @@
             </SwipeItemView>
         </SwipeItems>
     </SwipeView.RightItems>
-    <controls:ItemView>
-        <controls:ItemView.GestureRecognizers>
-            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
-        </controls:ItemView.GestureRecognizers>
-    </controls:ItemView>
+    <controls:ItemView/>
 </SwipeView>

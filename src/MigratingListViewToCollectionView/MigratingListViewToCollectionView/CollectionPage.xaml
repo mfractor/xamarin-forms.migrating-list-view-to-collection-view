@@ -31,7 +31,7 @@
 
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <controls:InteractiveItemView OnItemSelected="InteractiveItemView_OnItemSelected"/>
+                        <controls:InteractiveItemView/>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
 
