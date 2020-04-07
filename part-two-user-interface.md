@@ -7,7 +7,7 @@ In this article we'll cover how to migrate your `ListView` cells so you can use 
 Setting your cell with a `ListView` uses a `DataTemplate` but requires your view to be contained within a `ViewCell` class. It looked a bit like this:
 
 ### Data Templates
-~~~ xaml
+~~~ xml
 <ListView.ItemTemplate>
     <DataTemplate>
         <ViewCell>
@@ -19,7 +19,7 @@ Setting your cell with a `ListView` uses a `DataTemplate` but requires your view
 
 `CollectionView` simplifies this. We no longer have to wrap our content in a `ViewCell` and instead can set our content directly. Here we're using our own `InteractiveItemView` that we'll see later:
 
-~~~ xaml
+~~~ xml
 <CollectionView.ItemTemplate>
     <DataTemplate>
         <controls:InteractiveItemView OnItemSelected="InteractiveItemView_OnItemSelected"/>
@@ -39,7 +39,7 @@ With `ListView` we needed to specify `HasUnevenRows="true"` and `RowHeight="-1"`
 
 To support this on `ListView` we would add an empty view to the layout containing our list, then bind `IsVisible` to view model properties that we have to manage ourselves. Here we use `HasFilteredItems` and `DoesNotHaveFilteredItems`.
 
-~~~ xaml
+~~~ xml
 <ListView Grid.Row="2"
     ...
     IsVisible="{Binding HasFilteredItems}"
@@ -60,7 +60,7 @@ To support this on `ListView` we would add an empty view to the layout containin
 
 `CollectionView` makes this dead simple. All we need to do is set the `EmptyView` property and it takes care of the rest!
 
-~~~xaml
+~~~xml
 <CollectionView ItemsSource="{Binding FilteredItems}" VerticalOptions="FillAndExpand">
 	...
 	...
