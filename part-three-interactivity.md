@@ -1,6 +1,6 @@
 ## Introduction
 
-Now that we've migrated our user interfaces to `CollectionView`, let's have a look at user interaction.
+Now that we've migrated our user interfaces to `CollectionView`, let's have a look at user interaction by adding cell selection, tap navigation, swipe context actions, and pull to refresh.
 
 ## Cell Selection
 
