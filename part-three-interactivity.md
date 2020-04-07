@@ -107,6 +107,53 @@ public ICommand RefreshCommand
 
 ## Cell Context Actions
 
-Using SwipeView
+Swipe context actions on `ListView` cells were supports through an `IList` of `ViewCell.ContextActions` like so:
+
+~~~xml
+<ListView.ItemTemplate>
+    <DataTemplate>
+        <ViewCell>
+            <ViewCell.ContextActions>
+                <MenuItem Text="⭐️" Command="{Binding ItemFavourited}"/>
+            </ViewCell.ContextActions>
+            <controls:ItemView/>
+        </ViewCell>
+    </DataTemplate>
+</ListView.ItemTemplate>
+~~~
+
+Here we have one `MenuItem` displaying "⭐️" and executing our `ItemViewModel.ItemFavourited` command when tapped. To migrate this to `CollectionView` we have to embed our `ItemView` in a `SwipeView` container:
+
+~~~xml
+<?xml version="1.0" encoding="utf-8"?>
+<SwipeView xmlns="http://xamarin.com/schemas/2014/forms"
+           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+           x:Class="MigratingListViewToCollectionView.Controls.InteractiveItemView"
+           x:Name="self"
+           xmlns:controls="clr-namespace:MigratingListViewToCollectionView.Controls">
+    <SwipeView.RightItems>
+        <SwipeItems Mode="Reveal">
+            <SwipeItemView Command="{Binding ItemFavourited}">
+                <Label Padding="0,0,0,20"
+                   Text="⭐️"
+                   VerticalTextAlignment="Center"
+                   HorizontalTextAlignment="End"
+                   FontSize="48"
+                   WidthRequest="300"/>
+            </SwipeItemView>
+        </SwipeItems>
+    </SwipeView.RightItems>
+    <controls:ItemView>
+        <controls:ItemView.GestureRecognizers>
+            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+        </controls:ItemView.GestureRecognizers>
+    </controls:ItemView>
+</SwipeView>
+~~~
+
+The `SwipeView` is highly customizable. Here we implement our `ListView` feature by setting some right swipe items. When our `Mode="Reveal"` the items are revealed on swipe. The user has to then tap on the item to execute the bound `ItemViewModel.ItemFavourited` command. If `Mode="Execute"` the command is executed on swipe. Then by default the drawer closes after execution, but it can be customized to stay open. We can also supply our own layout to `SwipeItemView` as we do here, which is very nice.
+
+The combination of items, directions, execution modes, and swipe behaviors make this a powerful control. See the full documentation [here](https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/swipeview)
 
 ## Summary
+`CollectionView` interactivity is more flexible than `ListView`. Using the new APIs makes it easy to add context actions, pull to refresh, single or multi-select, and navigation.
