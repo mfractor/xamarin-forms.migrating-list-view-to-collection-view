@@ -17,7 +17,7 @@ Setting your cell with a `ListView` uses a `DataTemplate` but requires your view
 </ListView.ItemTemplate>
 ~~~
 
-`CollectionView` simplifies this. Since it doesn't use a `ViewCell` to display an item, we can assign any old `View` as the content of our `DataTemplate`. Here we're using our own `InteractiveItemView` that we'll see later:
+`CollectionView` simplifies this. We no longer have to wrap our content in a `ViewCell` and instead can set our content directly. Here we're using our own `InteractiveItemView` that we'll see later:
 
 ~~~ xaml
 <CollectionView.ItemTemplate>
@@ -33,11 +33,7 @@ With `ListView` we needed to specify `HasUnevenRows="true"` and `RowHeight="-1"`
 
 ## Data Template Selector
 
-Migrating a data template selector to
-
-**ListView - Data Template Selector**
-
-**CollectionView - Data Template Selector**
+`DataTemplateSelector` functions the same as before but make sure the content of your `DataTemplate` is no longer wrapped in a `ViewCell`.
 
 ## Empty View Support
 
@@ -78,3 +74,4 @@ To support this on `ListView` we would add an empty view to the layout containin
 
 
 ## Summary
+Migrating your user interface from `ListVew` to `CollectionView` is worth the minimal effort. We can easily support single or multiple cell `DataTemplate`s with dynamic sizes, as well as empty views that automatically display by reading our `ItemsSource` data. 
