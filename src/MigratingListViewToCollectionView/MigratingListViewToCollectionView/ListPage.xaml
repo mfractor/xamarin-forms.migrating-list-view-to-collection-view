@@ -3,12 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MigratingListViewToCollectionView.ListPage"
              Title="List View"
-             Padding="0,30,0,0" xmlns:local="clr-namespace:MigratingListViewToCollectionView" xmlns:controls="clr-namespace:MigratingListViewToCollectionView.Controls">
+             Padding="0,30,0,0" xmlns:local="clr-namespace:MigratingListViewToCollectionView" xmlns:controls="clr-namespace:MigratingListViewToCollectionView.Controls" xmlns:selectors="clr-namespace:MigratingListViewToCollectionView.DataTemplateSelectors">
     <ContentPage.IconImageSource>
         <FontImageSource FontFamily="{StaticResource FontAwesome5ProRegular}"
                          Glyph="&#xf022;"
                          Color="{StaticResource brandPrimary}"/>
     </ContentPage.IconImageSource>
+    <ContentPage.Resources>
+      <ResourceDictionary>
+          <selectors:ListViewDataTemplateSelector x:Key="listViewDataTemplateSelector"/>
+      </ResourceDictionary>
+   </ContentPage.Resources>
 
     <Grid VerticalOptions="FillAndExpand">
         <Grid.RowDefinitions>
