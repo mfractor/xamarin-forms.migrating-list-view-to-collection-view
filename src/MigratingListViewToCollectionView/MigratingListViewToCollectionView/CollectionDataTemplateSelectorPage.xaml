@@ -7,7 +7,9 @@
              Padding="0,30,0,0" xmlns:selectors="clr-namespace:MigratingListViewToCollectionView.DataTemplateSelectors">
    <ContentPage.Resources>
       <ResourceDictionary>
-          <selectors:CollectionViewDataTemplateSelector x:Key="collectionViewDataTemplateSelector"/>
+          <selectors:CollectionViewDataTemplateSelector
+              x:Key="collectionViewDataTemplateSelector"
+              OnItemSelected="InteractiveItemView_OnItemSelected" />
       </ResourceDictionary>
    </ContentPage.Resources>
     <ContentPage.IconImageSource>
@@ -44,6 +46,5 @@
 
             </CollectionView>
         </RefreshView>
-
     </Grid>
 </ContentPage>
