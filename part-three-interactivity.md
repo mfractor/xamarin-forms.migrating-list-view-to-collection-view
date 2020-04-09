@@ -1,19 +1,47 @@
 ## Introduction
 
-Now that we've migrated our user interfaces to `CollectionView`, let's have a look at user interaction by adding cell selection, tap navigation, swipe context actions, and pull to refresh.
+Now that we've migrated our user interfaces to `CollectionView`, let's have a look at user interaction by adding cell tap, swipe context actions, and pull to refresh.
 
-## Selecting or Tapping Cells
+## Tapping Cells
 
-How to process tap events on your cells
+Tapping cells on `ListView` we used the `ItemTapped` event which I will omit for brevity because I assume everyone already knows how to use it. Because `CollectionView` has more features than `ListView`, it's a little different to get item tap setup. I see a lot of people confused over this one because they expected an `ItemTappedCommand`. The `CollectionView` has more flexible cell selection features, so even though there's no tap command directly, it's still easy to setup.
 
-- single template
-- with data template selector
+To tap a cell with `CollectionView` we use single selection mode along with the `SelectionChangedCommand`. Then we bind the `SelectedItem` to a property on our view model to use in our command.
 
-To achieve this with `CollectionView` we use the `SelectionChangedCommand` and pass it our `SelectedItem`. Some of you might wonder we don't just use the bound `SelectedItem` in the view model directly. You can probably get away with it here, but to avoid any kind of race conditions it's safer to use the parameter passed to the command.
+~~~xml
+<CollectionView
+	SelectionMode="Single"
+	SelectedItem="{Binding SelectedItem}"
+	SelectionChangedCommand="{Binding ItemSelectedCommand}"
+	ItemsSource="{Binding FilteredItems}" VerticalOptions="FillAndExpand">
+                
+                ...
 
-### Inline Views
+</CollectionView>
+~~~
 
-Adding a tap gesture recogniser to your data template.
+~~~csharp
+public ItemViewModel SelectedItem { get; set; }
+
+public ICommand ItemSelectedCommand
+{
+    get
+    {
+        return new Command(_ =>
+        {
+            if (SelectedItem == null)
+                return;
+
+            Acr.UserDialogs.UserDialogs.Instance.Alert("You selected " + SelectedItem.Text);
+            SelectedItem = null;
+        });
+    }
+}
+~~~
+
+We set `SelectedItem = null` to remove the cell highlight, which is common to do if you're using cell tap for master-detal navigation.
+
+It's worth noting that at the time of this writing I noticed that `SwipeView` seems to interfere with the cell selection (or rather change it's behavior selecting a cell on tap).
 
 ## Pull To Refresh
 
@@ -158,4 +186,4 @@ The `SwipeView` is highly customizable. Here we implement our `ListView` feature
 The combination of items, directions, execution modes, and swipe behaviors make this a powerful control. See the full documentation [here](https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/swipeview)
 
 ## Summary
-`CollectionView` interactivity is more flexible than `ListView`. Using the new APIs makes it easy to add context actions, pull to refresh, single or multi-select, and navigation.
+`CollectionView` interactivity is more flexible than `ListView`. Using the new APIs makes it easy to add context actions, pull to refresh, and single or multi-select.

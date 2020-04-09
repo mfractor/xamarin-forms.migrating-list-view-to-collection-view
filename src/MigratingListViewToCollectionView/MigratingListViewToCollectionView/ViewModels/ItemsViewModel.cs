@@ -17,7 +17,7 @@ namespace MigratingListViewToCollectionView.ViewModels
         {
             get
             {
-                return new Command<ItemViewModel>(_ =>
+                return new Command(_ =>
                 {
                     if (SelectedItem == null)
                         return;

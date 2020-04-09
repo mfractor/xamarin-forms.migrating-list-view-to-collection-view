@@ -24,7 +24,6 @@
 
         <RefreshView IsRefreshing="{Binding IsRefreshing}" Command="{Binding RefreshCommand}" Grid.Row="2">
             <CollectionView
-                x:Name="collectionView"
                 SelectionMode="Single"
                 SelectedItem="{Binding SelectedItem}"
                 SelectionChangedCommand="{Binding ItemSelectedCommand}"
