@@ -5,20 +5,25 @@ using System.Windows.Input;
 using MigratingListViewToCollectionView.Fonts;
 using PropertyChanged;
 using Xamarin.Forms;
-using System;
 
 namespace MigratingListViewToCollectionView.ViewModels
 {
     [AddINotifyPropertyChangedInterface]
     public class ItemsViewModel 
     {
+        public ItemViewModel SelectedItem { get; set; }
+
         public ICommand ItemSelectedCommand
         {
             get
             {
                 return new Command<ItemViewModel>((item) =>
                 {
+                    if (item == null)
+                        return;
+
                     Acr.UserDialogs.UserDialogs.Instance.Alert("You selected " + item.Text);
+                    SelectedItem = null;
                 });
             }
         }
