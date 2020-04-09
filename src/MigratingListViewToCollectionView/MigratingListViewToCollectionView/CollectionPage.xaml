@@ -28,7 +28,6 @@
                 SelectionMode="Single"
                 SelectedItem="{Binding SelectedItem}"
                 SelectionChangedCommand="{Binding ItemSelectedCommand}"
-                SelectionChangedCommandParameter="{Binding SelectedItem, Source={x:Reference collectionView}}"
                 ItemsSource="{Binding FilteredItems}" VerticalOptions="FillAndExpand">
 
                 <CollectionView.ItemsLayout>

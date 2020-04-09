@@ -17,12 +17,12 @@ namespace MigratingListViewToCollectionView.ViewModels
         {
             get
             {
-                return new Command<ItemViewModel>((item) =>
+                return new Command<ItemViewModel>(_ =>
                 {
-                    if (item == null)
+                    if (SelectedItem == null)
                         return;
 
-                    Acr.UserDialogs.UserDialogs.Instance.Alert("You selected " + item.Text);
+                    Acr.UserDialogs.UserDialogs.Instance.Alert("You selected " + SelectedItem.Text);
                     SelectedItem = null;
                 });
             }

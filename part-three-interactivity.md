@@ -2,12 +2,14 @@
 
 Now that we've migrated our user interfaces to `CollectionView`, let's have a look at user interaction by adding cell selection, tap navigation, swipe context actions, and pull to refresh.
 
-## Cell Selection
+## Selecting or Tapping Cells
 
 How to process tap events on your cells
 
 - single template
 - with data template selector
+
+To achieve this with `CollectionView` we use the `SelectionChangedCommand` and pass it our `SelectedItem`. Some of you might wonder we don't just use the bound `SelectedItem` in the view model directly. You can probably get away with it here, but to avoid any kind of race conditions it's safer to use the parameter passed to the command.
 
 ### Inline Views
 
