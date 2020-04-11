@@ -67,12 +67,6 @@ A common scenario we need to support when displaying lists of data is to accommo
 
 We will cover the `EmptyView` property in depth in the next article in this series.
 
-### Item Snapping
-
-When users scroll through our lists, we may want to force the list to snap to the start, center, or end of an item. This type of feature is common in apps, ie: a horizontal collection of cards that snap to center as you scroll. 
-
-We will cover item snapping later in this series.
-
 ## CollectionView: Increased Flexibility
 
 Lastly, `CollectionView` is much more flexible for presenting collections of items:
@@ -86,18 +80,15 @@ Collection views can scroll vertically or horizontally by specifiying the `IItem
 
 A popular layout for presenting data is a grid. Using `GridItemsLayout` on our `CollectionView` makes it easy to display grids of x rows or columns. 
 
-We'll cover these in detail later in this series.
-
 ## Feature Parity
 
-CollectionViews also have full feature parity with ListViews, this includes the following features:
+CollectionViews also have full feature parity with ListViews, including the following features:
 
- * Grouping: Items in a CollectionView also support grouping through the
- * Header View: CollectionView supports header
- * Footer View: CollectionView also support
+ * [Grouping](https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/collectionview/grouping): Items in a CollectionView also support grouping and have additional features such as `GroupFooterTemplate`.
+ * [Headers and Footers](https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/collectionview/layout#headers-and-footers)
  * [Scroll To:](https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/collectionview/scrolling) Use the `ScrollTo` method to scroll an item in the collection into view.
- * Seperator Item: CollectionViews do not have them
+ * Separators: CollectionViews do not have them by default (removing them is a common task for devs).
 
 ## Summary
 
-CollectionViews, with their simpler API surface, rich features and increased flexibility, provide many benefits
+`CollectionView`, with its simpler API surface, rich features, and increased flexibility, provide many benefits over the traditional `ListView`.

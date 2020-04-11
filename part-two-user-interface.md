@@ -27,6 +27,8 @@ Setting your cell with a `ListView` uses a `DataTemplate` but requires your view
 </CollectionView.ItemTemplate>
 ~~~
 
+See full documentation [here](https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/collectionview/populate-data#define-item-appearance).
+
 ### Supporting Dynamic Cell Sizes
 
 With `ListView` we needed to specify `HasUnevenRows="true"` and `RowHeight="-1"` to get dynamic cell sizes. Since `CollectionView` supports this by default, the sizes are determined by the content of our `DataTemplate` and that's it. This means that when you're displaying multiple cell types in your list, the heights are driven from the `View` from each `DataTemplate`.
@@ -56,8 +58,6 @@ To support this on `ListView` we would add an empty view to the layout containin
 </ContentView>
 ~~~
 
-(**Matthew: add view model implementation here? or is that too verbose?**)
-
 `CollectionView` makes this dead simple. All we need to do is set the `EmptyView` property and it takes care of the rest!
 
 ~~~xml
@@ -71,6 +71,8 @@ To support this on `ListView` we would add an empty view to the layout containin
     </CollectionView.EmptyView>
 </CollectionView>
 ~~~
+
+See full documentation [here](https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/collectionview/emptyview).
 
 
 ## Summary

@@ -43,6 +43,8 @@ We set `SelectedItem = null` to remove the cell highlight, which is common to do
 
 It's worth noting that at the time of this writing I noticed that `SwipeView` seems to interfere with the cell selection (or rather change it's behavior selecting a cell on tap).
 
+See full documentation [here](https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/collectionview/selection).
+
 ## Pull To Refresh
 
 ### ListView
@@ -133,7 +135,8 @@ public ICommand RefreshCommand
     }
 }
 ~~~
-  
+
+See full documentation [here](https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/collectionview/populate-data#pull-to-refresh).
 
 ## Cell Context Actions
 
@@ -183,7 +186,7 @@ Here we have one `MenuItem` displaying "⭐️" and executing our `ItemViewModel
 
 The `SwipeView` is highly customizable. Here we implement our `ListView` feature by setting some right swipe items. When our `Mode="Reveal"` the items are revealed on swipe. The user has to then tap on the item to execute the bound `ItemViewModel.ItemFavourited` command. If `Mode="Execute"` the command is executed on swipe. Then by default the drawer closes after execution, but it can be customized to stay open. We can also supply our own layout to `SwipeItemView` as we do here, which is very nice.
 
-The combination of items, directions, execution modes, and swipe behaviors make this a powerful control. See the full documentation [here](https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/swipeview)
+The combination of items, directions, execution modes, and swipe behaviors make this a powerful control. See full documentation [here](https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/swipeview)
 
 ## Summary
 `CollectionView` interactivity is more flexible than `ListView`. Using the new APIs makes it easy to add context actions, pull to refresh, and single or multi-select.
