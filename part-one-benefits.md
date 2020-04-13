@@ -51,11 +51,11 @@ ListViews use the `CachingStrategy` API to achieve this, however, CollectionView
 
 ### Built In Dynamic Cell Sizes
 
-It is *very* common to create lists with multiple cell types that have varying sizes. `ListView`, however, did not support varying cell heights by default.
+It is **very** common to create lists with multiple cell types that have varying sizes. `ListView`, however, did not support varying cell heights by default.
 
 To support cells with differing height, we would omit the `RowHeight` property and then set `HasUnevenRows` to `true`. If we forgot to do this, it would lead to bugs where the cells content would be clipped where it exceeded the row height or show excessive padding.
 
-CollectionView supports dynamic cell sizes out of the box.
+[CollectionView supports dynamic cell sizes out of the box.](https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/collectionview/layout#dynamic-resizing-of-items)
 
 ## CollectionView: Feature Richness
 
@@ -75,10 +75,17 @@ Lastly, `CollectionView` is much more flexible for presenting collections of ite
 
 Collection views can scroll vertically or horizontally by specifiying the `IItemsLayout.Orientation` property. This works with both grid and list layouts!
 
+### Item Snapping
+
+When users scroll through our lists, we may want to force the list to snap to the start, center, or end of an item. This type of feature is common in apps, ie: a horizontal collection of cards that snap to center as you scroll.
+
+[The documentation for applying snapping behaviour to a ColletionView can be found here.](https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/collectionview/scrolling#snap-points)
 
 ### Grid Display
 
 A popular layout for presenting data is a grid. Using `GridItemsLayout` on our `CollectionView` makes it easy to display grids of x rows or columns. 
+
+[The documentation for using grid layouts within a a ColletionView can be found here.](https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/collectionview/layout#vertical-grid).
 
 ## Feature Parity
 
@@ -87,7 +94,7 @@ CollectionViews also have full feature parity with ListViews, including the foll
  * [Grouping](https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/collectionview/grouping): Items in a CollectionView also support grouping and have additional features such as `GroupFooterTemplate`.
  * [Headers and Footers](https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/collectionview/layout#headers-and-footers)
  * [Scroll To:](https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/collectionview/scrolling) Use the `ScrollTo` method to scroll an item in the collection into view.
- * Separators: CollectionViews do not have them by default (removing them is a common task for devs).
+ * Separators: CollectionViews do not have them by default (removing them is a common task for devs). To create separators for your collection view, you include them within your data-template.
 
 ## Summary
 
