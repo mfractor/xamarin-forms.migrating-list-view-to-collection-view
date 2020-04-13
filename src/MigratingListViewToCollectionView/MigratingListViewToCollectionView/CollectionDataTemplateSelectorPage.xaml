@@ -27,9 +27,15 @@
 
         <ContentView Grid.Row="1" HeightRequest="2" BackgroundColor="{StaticResource brandSecondary}" />
 
-        <RefreshView IsRefreshing="{Binding IsRefreshing}" Command="{Binding RefreshCommand}" Grid.Row="2">
+        <RefreshView IsRefreshing="{Binding IsRefreshing}"
+                     Command="{Binding RefreshCommand}"
+                     Grid.Row="2">
+
             <CollectionView ItemsSource="{Binding FilteredItems}"
                             VerticalOptions="FillAndExpand"
+                            SelectionMode="Single"
+                            SelectionChanged="CollectionView_SelectionChanged"
+                            SelectionChangedCommand="{Binding ItemSelectedCommand}"
                             ItemTemplate="{StaticResource collectionViewDataTemplateSelector}">
 
                 <CollectionView.ItemsLayout>
@@ -44,6 +50,5 @@
 
             </CollectionView>
         </RefreshView>
-
     </Grid>
 </ContentPage>

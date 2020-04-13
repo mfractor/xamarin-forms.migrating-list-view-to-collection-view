@@ -11,6 +11,23 @@ namespace MigratingListViewToCollectionView.ViewModels
     [AddINotifyPropertyChangedInterface]
     public class ItemsViewModel 
     {
+        public ItemViewModel SelectedItem { get; set; }
+
+        public ICommand ItemSelectedCommand
+        {
+            get
+            {
+                return new Command(_ =>
+                {
+                    if (SelectedItem == null)
+                        return;
+
+                    Acr.UserDialogs.UserDialogs.Instance.Alert("You selected " + SelectedItem.Text);
+                    SelectedItem = null;
+                });
+            }
+        }
+
         public ICommand RefreshCommand
         {
             get

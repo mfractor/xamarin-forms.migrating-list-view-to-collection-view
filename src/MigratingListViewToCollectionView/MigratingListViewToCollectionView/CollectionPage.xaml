@@ -23,7 +23,11 @@
         <ContentView Grid.Row="1" HeightRequest="2" BackgroundColor="{StaticResource brandSecondary}" />
 
         <RefreshView IsRefreshing="{Binding IsRefreshing}" Command="{Binding RefreshCommand}" Grid.Row="2">
-            <CollectionView ItemsSource="{Binding FilteredItems}" VerticalOptions="FillAndExpand">
+            <CollectionView
+                SelectionMode="Single"
+                SelectedItem="{Binding SelectedItem}"
+                SelectionChangedCommand="{Binding ItemSelectedCommand}"
+                ItemsSource="{Binding FilteredItems}" VerticalOptions="FillAndExpand">
 
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout Orientation="Vertical"/>
@@ -31,7 +35,7 @@
 
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <controls:InteractiveItemView OnItemSelected="InteractiveItemView_OnItemSelected"/>
+                        <controls:ItemView/>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
 

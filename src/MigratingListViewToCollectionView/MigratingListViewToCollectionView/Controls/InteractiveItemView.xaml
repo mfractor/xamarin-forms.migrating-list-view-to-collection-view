@@ -5,7 +5,7 @@
            x:Name="self"
            xmlns:controls="clr-namespace:MigratingListViewToCollectionView.Controls">
     <SwipeView.RightItems>
-        <SwipeItems Mode="Execute">
+        <SwipeItems Mode="Reveal">
             <SwipeItemView Command="{Binding ItemFavourited}">
                 <Label Padding="0,0,0,20"
                    Text="⭐️"
@@ -16,9 +16,5 @@
             </SwipeItemView>
         </SwipeItems>
     </SwipeView.RightItems>
-    <controls:ItemView>
-        <controls:ItemView.GestureRecognizers>
-            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
-        </controls:ItemView.GestureRecognizers>
-    </controls:ItemView>
+    <controls:ItemView/>
 </SwipeView>
